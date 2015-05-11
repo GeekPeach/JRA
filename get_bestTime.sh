@@ -49,7 +49,7 @@ where
 ;
 EOT
 
-psql pckeiba -U postgres -t -A -F"      " << EOT2 > ${ddir}/tmp_${5}.tsv
+psql pckeiba -U postgres -t -A -F"	" << _EOT2 > ${ddir}/tmp_${tDist}.tsv
 
 select 
  l.ketto_toroku_bango
@@ -77,7 +77,7 @@ where
 group by l.ketto_toroku_bango
 order by l.ketto_toroku_bango
 ;
-EOT2
+_EOT2
 
 }
 
