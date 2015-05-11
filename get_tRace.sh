@@ -19,5 +19,5 @@ ruby sorted_row_join.rb ../data/tmp_horse_info.tsv > ../data/tmp_joined_rinfo.ts
 sh get_bestTime.sh ${date} ${keibajo} ${race} ${TD} ${tDist}
 sh get_konkan.sh ${date} ${keibajo} ${race} ${TD}
 
-LANG=C join -a1 -t"$(printf '\011')" ../data/tmp_target.tsv ../data/tmp_joined_rinfo.tsv | cut -f1-17,19-28,30-39 | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tm1FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tp1FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tm2FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tp2FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_konkan.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_hikonkan.tsv > ${ddir}/tr.tsv
+join -a1 -t"$(printf '\011')" ../data/tmp_target.tsv ../data/tmp_joined_rinfo.tsv | cut -f1-17,19-28,30-39 | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tm1FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tp1FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tm2FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_${tp2FDist}.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_konkan.tsv | join -a1 -t"$(printf '\011')" - ${ddir}/tmp_hikonkan.tsv > ${ddir}/tr.tsv
 
