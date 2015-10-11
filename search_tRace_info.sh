@@ -4,7 +4,7 @@ race_date=$1
 race_course=$2
 race_bango=$3
 
-psql pckeiba -U postgres -t -A -F"	" << EOT
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -t -A -F"	" << EOT
 
 select 
  l.ketto_toroku_bango,
