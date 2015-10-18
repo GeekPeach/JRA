@@ -3,7 +3,7 @@
 ddir="/home/ec2-user/dev/JRA/data"
 
 #psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -f mk_wk_record_time.sql
-ddir="/home/grass/JRA/data"
+ddir="/home/ec2-user/dev/JRA/data"
 
 #psql pckeiba -U postgres -f mk_wk_record_time.sql
 
@@ -66,17 +66,12 @@ from jvd_umagoto_race_joho l
 left outer join wk_bestTime r 
 on 
  l.ketto_toroku_bango = r.ketto_toroku_bango
- and kyori = '${tDist}'
-where 
- l.ketto_toroku_bango in (
- select ketto_toroku_bango from 
- jvd_umagoto_race_joho 
- where 
- kaisai_nengappi = '${race_date}' AND 
- keibajo_code = '${race_course}' AND 
- race_bango = ${race_bango}
-)
+ AND kyori = '${tDist}'
  AND td = '${TD}'
+where 
+ l.kaisai_nengappi = '${race_date}'
+ AND l.keibajo_code = '${race_course}'
+ AND l.race_bango = ${race_bango}
 group by l.ketto_toroku_bango
 order by l.ketto_toroku_bango
 ;
