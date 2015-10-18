@@ -1,5 +1,8 @@
 #/bin/sh
 
+ddir="/home/ec2-user/dev/JRA/data"
+
+#psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -f mk_wk_record_time.sql
 ddir="/home/grass/JRA/data"
 
 #psql pckeiba -U postgres -f mk_wk_record_time.sql
@@ -11,7 +14,7 @@ local race_course=$2
 local race_bango=$3
 local TD=$4
 local tDist=$5
-psql pckeiba -U postgres -A -F"	" << EOT
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -A -F"	" << EOT
 
 drop table wk_bestTime;
 create table wk_bestTime as 
@@ -49,7 +52,7 @@ where
 ;
 EOT
 
-psql pckeiba -U postgres -t -A -F"	" << _EOT2 > ${ddir}/tmp_${tDist}.tsv
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -t -A -F"	" << _EOT2 > ${ddir}/tmp_${tDist}.tsv
 
 select 
  l.ketto_toroku_bango

@@ -1,8 +1,9 @@
 #/bin/sh
 
-ddir="/home/grass/JRA/data"
+ddir="/home/ec2-user/dev/JRA/data"
 
-psql pckeiba -U postgres -f mk_wk_record_time.sql
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -f mk_wk_record_time.sql
+ddir="/home/grass/JRA/data"
 
 function bestTime() 
 { 
@@ -11,7 +12,7 @@ local race_course=$2
 local race_bango=$3
 local TD=$4
 local tDist=$5
-psql pckeiba -U postgres -A -F"	" << EOT > /dev/null
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -A -F"	" << EOT > /dev/null
 
 create table wk_time_diff as 
 select 

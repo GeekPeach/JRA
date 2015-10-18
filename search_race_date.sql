@@ -1,5 +1,5 @@
 race=$1
-psql pckeiba -U postgres << EOT
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba << EOT
 
 select
  kyosomei_hondai,

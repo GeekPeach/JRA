@@ -1,5 +1,6 @@
 #/bin/sh
 
+ddir="/home/ec2-user/dev/JRA/data"
 ddir="/home/grass/JRA/data"
 
 
@@ -17,7 +18,7 @@ else
   eq="!="
 fi
 
-psql pckeiba -U postgres -A -F"	" << EOT
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -A -F"	" << EOT
 
 drop table wk_konkan;
 
@@ -55,7 +56,7 @@ where
 ;
 EOT
 
-psql pckeiba -U postgres -t -A -F"	" << EOT2 > ${ddir}/tmp_${5}.tsv
+psql -h pckeiba2.civkqfk3e4wj.ap-northeast-1.rds.amazonaws.com --username=postgres --dbname=pckeiba -t -A -F"	" << EOT2 > ${ddir}/tmp_${5}.tsv
 select 
  ketto_toroku_bango as ketto_bango
 ,SUM(case when chakujun <= 2 then 1 else 0 end) / cast (count(chakujun) as float4)  as rentairitsu

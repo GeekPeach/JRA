@@ -1,4 +1,5 @@
 #/bin/sh
+ddir="/home/ec2-user/dev/JRA/data"
 ddir="/home/grass/JRA/data"
 
 rm ../data/pr*.tsv
